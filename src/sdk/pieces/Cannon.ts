@@ -1,5 +1,5 @@
 import { BasePiece } from './BasePiece';
-import { PieceType, PieceColor, Position, Board, Piece } from '../types';
+import { PieceType, PieceColor, Position, Board } from '../types';
 import { PathUtils } from '../utils/PathUtils';
 
 export class Cannon extends BasePiece {
@@ -7,11 +7,13 @@ export class Cannon extends BasePiece {
     super(PieceType.CANNON, color, position);
   }
 
-  protected isValidMove(position: Position, board: Board, targetPiece: Piece | null): boolean {
+  protected isValidMove(position: Position, board: Board): boolean {
     // 炮只能直线移动
     if (!PathUtils.isStraightMove(this.position, position)) {
       return false;
     }
+
+    const targetPiece = board.getPieceAt(position);
     
     // 路径上的棋子数量
     const piecesInPath = PathUtils.countPiecesInPath(this.position, position, board);

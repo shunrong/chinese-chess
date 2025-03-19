@@ -1,5 +1,5 @@
 import { BasePiece } from './BasePiece';
-import { PieceType, PieceColor, Position, Board, Piece } from '../types';
+import { PieceType, PieceColor, Position, Board } from '../types';
 
 export class King extends BasePiece {
   constructor(color: PieceColor, position: Position) {
@@ -7,7 +7,7 @@ export class King extends BasePiece {
   }
 
   // 修改 isValidMove 实现以处理特殊情况
-  protected isValidMove(position: Position, board: Board, targetPiece: Piece | null): boolean {
+  protected isValidMove(position: Position, board: Board): boolean {
     // 将/帅只能横向或纵向移动一格
     const dx = Math.abs(position.x - this.position.x);
     const dy = Math.abs(position.y - this.position.y);
@@ -18,12 +18,13 @@ export class King extends BasePiece {
     }
     
     // 特殊规则：将军与对方的将相遇（隔山打牛）
+    const targetPiece = board.getPieceAt(position);
     if (targetPiece && targetPiece.type === PieceType.KING) {
       // 只有在同一列才可能
       if (position.x === this.position.x) {
         // 检查两个将/帅之间是否有其他棋子
-        let minY = Math.min(this.position.y, position.y);
-        let maxY = Math.max(this.position.y, position.y);
+        const minY = Math.min(this.position.y, position.y);
+        const maxY = Math.max(this.position.y, position.y);
         
         for (let y = minY + 1; y < maxY; y++) {
           if (board.getPieceAt({ x: position.x, y })) {

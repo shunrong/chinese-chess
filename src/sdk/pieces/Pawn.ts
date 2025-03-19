@@ -1,5 +1,5 @@
 import { BasePiece } from './BasePiece';
-import { PieceType, PieceColor, Position, Board, Piece } from '../types';
+import { PieceType, PieceColor, Position } from '../types';
 
 export class Pawn extends BasePiece {
   constructor(color: PieceColor, position: Position) {
@@ -7,7 +7,7 @@ export class Pawn extends BasePiece {
   }
 
   // 添加抽象方法实现
-  protected isValidMove(position: Position, _board: Board, _targetPiece: Piece | null): boolean {
+  protected isValidMove(position: Position): boolean {
     // 兵/卒移动规则
     const dx = Math.abs(position.x - this.position.x);
     const dy = position.y - this.position.y;

@@ -36,23 +36,15 @@ export abstract class BasePiece implements Piece {
     }
     
     // 4. 调用子类实现的特定移动规则
-    return this.isValidMove(position, board, targetPiece);
+    return this.isValidMove(position, board);
   }
   
   // 子类必须实现的方法 - 特定棋子的移动规则
-  protected abstract isValidMove(position: Position, board: Board, targetPiece: Piece | null): boolean;
+  protected abstract isValidMove(position: Position, board: Board): boolean;
   
   // 边界检查 - 可被子类覆盖
   protected isWithinBoundary(position: Position): boolean {
     // 默认只检查是否在棋盘范围内
     return position.x >= 0 && position.x < 9 && position.y >= 0 && position.y < 10;
-  }
-
-  /**
-   * 检查目标位置是否被己方棋子占据
-   */
-  protected isSameColorPieceAt(position: Position, board: Board): boolean {
-    const targetPiece = board.getPieceAt(position);
-    return !!targetPiece && targetPiece.color === this.color;
   }
 } 

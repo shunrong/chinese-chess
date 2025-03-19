@@ -1,12 +1,12 @@
 import { BasePiece } from './BasePiece';
-import { PieceType, PieceColor, Position, Board, Piece } from '../types';
+import { PieceType, PieceColor, Position, Board } from '../types';
 
 export class Elephant extends BasePiece {
   constructor(color: PieceColor, position: Position) {
     super(PieceType.ELEPHANT, color, position);
   }
 
-  protected isValidMove(position: Position, board: Board, _targetPiece: Piece | null): boolean {
+  protected isValidMove(position: Position, board: Board): boolean {
     // 象/相走田字，即横竖各走两格
     const dx = Math.abs(position.x - this.position.x);
     const dy = Math.abs(position.y - this.position.y);

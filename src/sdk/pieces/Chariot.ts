@@ -1,12 +1,12 @@
 import { BasePiece } from './BasePiece';
-import { PieceType, PieceColor, Position, Board, Piece } from '../types';
+import { PieceType, PieceColor, Position, Board } from '../types';
 
 export class Chariot extends BasePiece {
   constructor(color: PieceColor, position: Position) {
     super(PieceType.CHARIOT, color, position);
   }
 
-  protected isValidMove(position: Position, board: Board, _targetPiece: Piece | null): boolean {
+  protected isValidMove(position: Position, board: Board): boolean {
     // 车只能横向或纵向移动
     if (position.x !== this.position.x && position.y !== this.position.y) {
       return false;

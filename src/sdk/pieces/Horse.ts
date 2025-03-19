@@ -1,5 +1,5 @@
 import { BasePiece } from './BasePiece';
-import { PieceType, PieceColor, Position, Board, Piece } from '../types';
+import { PieceType, PieceColor, Position, Board } from '../types';
 
 export class Horse extends BasePiece {
   constructor(color: PieceColor, position: Position) {
@@ -7,7 +7,7 @@ export class Horse extends BasePiece {
   }
 
   // 添加抽象方法实现
-  protected isValidMove(position: Position, board: Board, _targetPiece: Piece | null): boolean {
+  protected isValidMove(position: Position, board: Board): boolean {
     // 马走"日"字，横走一步再斜走一步或纵走一步再斜走一步
     const dx = Math.abs(position.x - this.position.x);
     const dy = Math.abs(position.y - this.position.y);
