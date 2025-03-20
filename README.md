@@ -1,54 +1,61 @@
-# React + TypeScript + Vite
+# 中国象棋
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![部署状态](https://github.com/[用户名]/chinese-chess/actions/workflows/deploy.yml/badge.svg)](https://github.com/[用户名]/chinese-chess/actions/workflows/deploy.yml)
 
-Currently, two official plugins are available:
+一个使用现代前端技术栈开发的中国象棋游戏。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 在线体验
 
-## Expanding the ESLint configuration
+访问 [https://[用户名].github.io/chinese-chess/](https://[用户名].github.io/chinese-chess/) 在线体验游戏。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 技术栈
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Vite + React 18 + TypeScript
+- Ant Design + Antd Style
+- Zustand 状态管理
+- 面向对象设计
+
+## 功能特点
+
+- 完整的中国象棋规则实现
+- 红黑双方对战
+- 响应式棋盘设计
+- 走棋提示和历史记录
+- 已吃棋子展示
+
+## 本地开发
+
+```bash
+# 安装依赖
+pnpm install
+
+# 启动开发服务器
+pnpm dev
+
+# 构建生产版本
+pnpm build
+
+# 预览生产版本
+pnpm preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 部署
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+项目配置了GitHub Actions自动部署到GitHub Pages。只需推送到main分支，就会自动构建和部署。
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 设计模式
+
+项目使用了多种设计模式，包括：
+
+- 模板方法模式：棋子移动规则实现
+- 策略模式：不同棋子的走法策略
+- 单例模式：ID生成器
+- 工厂模式：棋子创建
+
+## 维护者
+
+[您的名字]
+
+## 许可证
+
+MIT
